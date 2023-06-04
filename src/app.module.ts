@@ -3,12 +3,20 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { AppService } from './app.service';
+import { User } from './models/user.model';
+import { AppUpdate } from './app.update';
 
 @Module({
   imports: [
-    TelegrafModule.forRoot({
-      token: process.env.BOT_TOKEN,
+    TelegrafModule.forRootAsync({
+      botName: 'BotName',
+      useFactory: () => ({
+        token: process.env.BOT_TOKEN,
+        middlewares: [],
+        include: [],
+      }),
     }),
+    SequelizeModule.forFeature([User]),
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
@@ -25,6 +33,6 @@ import { AppService } from './app.service';
     }),
   ],
   controllers: [],
-  providers: [AppService],
+  providers: [AppService, AppUpdate],
 })
 export class AppModule {}
