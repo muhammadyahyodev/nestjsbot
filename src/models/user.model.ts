@@ -44,11 +44,6 @@ export class User extends Model<User, UserAttrs> {
   @Column({
     type: DataType.STRING,
   })
-  real_name: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
   last_name: string;
 
   @Column({
@@ -75,44 +70,4 @@ export class User extends Model<User, UserAttrs> {
     defaultValue: false,
   })
   is_ban: boolean;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  location: string;
-
-  @Column({
-    type: DataType.INTEGER,
-  })
-  paginationCount: number;
-
-  @Column({
-    type: DataType.INTEGER,
-  })
-  service_id: number;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  searchName: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  searchType: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  selectMasterId: string;
-
-  @Column({
-    type: DataType.STRING,
-  })
-  select_day: string;
-
-  @Column({
-    type: DataType.STRING(2000),
-  })
-  distance: string;
 }

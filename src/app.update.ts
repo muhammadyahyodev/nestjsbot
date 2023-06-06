@@ -1,4 +1,4 @@
-import { Ctx, Start, Update } from 'nestjs-telegraf';
+import { Ctx, Hears, Start, Update } from 'nestjs-telegraf';
 import { Context } from 'telegraf';
 import { AppService } from './app.service';
 
@@ -8,7 +8,11 @@ export class AppUpdate {
 
   @Start()
   async onStart(@Ctx() ctx: Context) {
-    console.log('CONTEXT: ', Context);
     return this.appService.onStart(ctx);
+  }
+
+  @Hears("👤 Ro'yhatdan o'tish")
+  async registrtion(@Ctx() ctx: Context) {
+    return this.appService.registration(ctx);
   }
 }
