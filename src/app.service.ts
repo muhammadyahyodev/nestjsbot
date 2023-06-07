@@ -52,7 +52,6 @@ export class AppService {
         user.last_state = 'contact_mijoz';
 
         await user.save();
-
         await userPhone(ctx);
       } else {
         user.last_state = 'main_mijoz';
@@ -64,4 +63,3 @@ export class AppService {
     }
   }
 }
-
