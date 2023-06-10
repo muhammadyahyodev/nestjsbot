@@ -63,23 +63,4 @@ export class AppService {
       console.log(error);
     }
   }
-
-  async changeMijozData(ctx: Context) {
-    try {
-      let user = await this.userRepository.findOne({
-        where: { user_id: String(ctx.from.id) },
-      });
-
-      if (!user) {
-        return mainMenu(ctx);
-      }
-      if (user.last_state == 'main_mijoz') {
-        user.last_state = 'change_mijoz';
-        await user.save();
-        await change_user_data(ctx);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
 }
