@@ -15,9 +15,4 @@ export class AppUpdate {
   async registrtion(@Ctx() ctx: Context) {
     return this.appService.registration(ctx);
   }
-
-  @Hears("👤 Ro'yhatdan o'tish")
-  async login(@Ctx() ctx: Context) {
-    return this.appService.registration(ctx);
-  }
 }
